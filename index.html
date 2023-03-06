@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/icon.svg" />
+    <title>Music Player</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <span class="icon"></span>
+      <span class="text">Music Player</span>
+    </header>
+    <main>
+      <div class="playerWrapper">
+        <section class="playerTop">
+          <ul class="optionList">
+            <li class="option">Liked Songs</li>
+            <li class="option">Playlist</li>
+            <li class="option">Albums</li>
+          </ul>
+        </section>
+        <section class="playlistWrap">
+          <h1 class="label1">Songs</h1>
+          <ul class="list"></ul>
+        </section>
+        <section class="playerBottom">
+          <div class="expandPlayer"></div>
+          <div class="trackInfo">
+            <img
+              src="./assets/404-error.png"
+              alt=""
+              class="albumArt playing-art"
+            />
+            <p class="title playing-title">N/A</p>
+            <p class="artist playing-artist"><small>N/A</small></p>
+          </div>
+          <div class="trackActions">
+            <div class="seekWrapper el">
+              <div class="currentTime">00:00</div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                class="seek"
+                onchange="seekTo()"
+              />
+              <div class="duration">00:00</div>
+            </div>
+            <div class="volWrapper el">
+              <button class="icon dec">-</button>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="99"
+                class="vol"
+                onchange="setVol()"
+              />
+              <button class="icon inc">+</button>
+            </div>
+            <div class="actions">
+              <button class="action shuffle" onclick="randomTrack()">
+                <img class="icon" src="./assets/shuffle.svg" alt="" />
+              </button>
+              <button class="action back" onclick="prevTrack()">
+                <img class="icon" src="./assets/backward.svg" alt="" />
+              </button>
+              <button class="action play" onclick="playPause()">
+                <img class="icon" src="./assets/play.svg" alt="" />
+              </button>
+              <button class="action next" onclick="nextTrack()">
+                <img class="icon next" src="./assets/forward.svg" alt="" />
+              </button>
+              <button class="action repeatAll" onclick="repeatTrack()">
+                <img class="icon" src="./assets/repeatAll.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
