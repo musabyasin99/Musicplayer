@@ -135,6 +135,13 @@ main {
   cursor: pointer;
   transition: 0.2s all ease;
 }
+.list .item .itemDetail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
 .list .item:hover,
 .list .item.playing {
   background: #000000a8;

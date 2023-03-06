@@ -60,16 +60,18 @@ let list = [
 list.map((item) => {
   playlist.innerHTML += `
   <li class="item">
-  <span class="albumArt"
-    ><img
-      style="font-size: 0.5rem; border-radius: 50%;object-fit:cover;"
-      width="50"
-      height="50"
-      src="${item.img}"
-      alt="poster"
-      class="poster"
-  /></span>
-  <span class="text">${item.title}</span>
+    <div class="itemDetail">
+      <span class="albumArt"
+        ><img
+          style="font-size: 0.5rem; border-radius: 50%;object-fit:cover;"
+          width="50"
+          height="50"
+          src="${item.img}"
+          alt="poster"
+          class="poster"
+      /></span>
+      <span class="text">${item.title}</span>
+    </div>
   <div class="edit">
     <img
       style="border-radius: 50%"
@@ -228,7 +230,7 @@ const setUpdate = () => {
 //    // Playlist(item) --> Play On Click
 
 loadTrack(trackIndex);
-let items = document.querySelectorAll(".item");
+let items = document.querySelectorAll(".itemDetail");
 items.forEach((item, i) => {
   item.addEventListener("click", () => {
     loadTrack(i);
