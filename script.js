@@ -45,7 +45,7 @@ let list = [
     Year: "2019",
   },
   {
-    img: "assets/images/art.jpg",
+    img: "assets/images/art2.jpg",
     title: "Evil",
     artist: "Kakashi",
     genre: "Alternative Rock",
@@ -71,7 +71,54 @@ let list = [
     music: "assets/audio/Bang.mp3",
     Year: "2022",
   },
+  {
+    img: "assets/images/art.jpg",
+    title: "Attack On Titans - Eye Water",
+    artist: "N/A",
+    genre: "N/A",
+    album: "N/A",
+    music: "assets/audio/Attack On Titan - Eye Water .m4a",
+    Year: "2022",
+  },
+  {
+    img: "assets/images/art2.jpg",
+    title: "Rengoku Theme - Demon Slayer",
+    artist: "Samuel Kin",
+    genre: "Orchestral/Instrumental",
+    album: "N/A",
+    music: "assets/audio/Demon Slayer - Rengoku Theme.m4a",
+    Year: "2022",
+  },
+  {
+    img: "assets/images/art.jpg",
+    title: "Dragon Ball Super - Ultimate Battle Theme",
+    artist: "N/A",
+    genre: "Orchestral/Instrumental",
+    album: "N/A",
+    music:
+      "assets/audio/Dragon Ball Super - Ultimate Battle-Ultra instinct _ Instrumental Epic Rock.m4a",
+    Year: "2019",
+  },
+  {
+    img: "assets/images/art2.jpg",
+    title: "Dragon Ball Super - Vegeta Royal Blue Theme",
+    artist: "N/A",
+    genre: "Orchestral/Instrumental",
+    album: "N/A",
+    music: "assets/audio/Vegeta Royal Blue Theme Song.m4a",
+    Year: "2019",
+  },
 ];
+
+list.sort((a, b) => {
+  if (a.title < b.title) {
+    return -1;
+  } else if (a.title > b.title) {
+    return 1;
+  } else {
+    return 0;
+  }
+});
 
 list.map((item) => {
   playlist.innerHTML += `
@@ -138,7 +185,6 @@ const loadTrack = (index) => {
   trackArt.src = list[index].img;
   trackTitle.innerHTML = list[index].title;
   trackArtist.innerHTML = list[index].artist;
-
   updateTimer = setInterval(setUpdate, 1000);
 
   currentTrack.addEventListener("ended", nextTrack);
