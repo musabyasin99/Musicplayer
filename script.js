@@ -28,6 +28,10 @@ let isPlaying = false;
 let isRandom = false;
 let updateTimer;
 
+const trackDetails = document.querySelector(".fullDetails");
+const detailToggle = trackDetails.querySelector(".viewDetails");
+const albumArt = trackDetails.querySelector(".albumArt");
+const trackInfo = trackDetails.querySelector(".trackInfo");
 // Playlist Section
 
 let list = [
@@ -35,27 +39,42 @@ let list = [
     img: "assets/images/art.jpg",
     title: "Darkness",
     artist: "Kakashi",
+    genre: "RnB",
+    album: "Darkness",
     music: "assets/audio/Darkness.mp3",
+    Year: "2019",
   },
   {
     img: "assets/images/art.jpg",
     title: "Evil",
     artist: "Kakashi",
+    genre: "Alternative Rock",
+    album: "Darkness",
     music: "assets/audio/Evil.mp3",
+    Year: "2019",
   },
   {
     img: "assets/images/art.jpg",
     title: "Illusion",
     artist: "Kakashi",
+    genre: "House",
+    album: "Darkness",
     music: "assets/audio/Illusion.mp3",
+    Year: "2020",
   },
   {
     img: "assets/images/art2.jpg",
     title: "Bang",
     artist: "Kakashi",
+    genre: "Dance",
+    album: "Darkness",
     music: "assets/audio/Bang.mp3",
+    Year: "2022",
   },
 ];
+
+let likedTracks = [];
+let userPlaylists = [];
 
 list.map((item) => {
   playlist.innerHTML += `
@@ -87,11 +106,29 @@ list.map((item) => {
 
 // Player-Bottom-Toggle (expand)
 
+const edit = document.querySelectorAll(".edit");
+
+edit.forEach((item, i) => {
+  item.addEventListener("click", (e) => {
+    trackDetails.classList.add("view");
+    albumArt.src = list[i].img;
+    trackInfo.innerHTML = `
+    <p class="trackTitle">Title : ${list[i].title}</p>
+    <p class="trackArtist">Artist : ${list[i].artist}</p>
+    <p class="trackAlbum">Album : ${list[i].album}</p>
+    <p class="trackgenre">Genre : ${list[i].genre}</p>
+    <p class="releaseDate">Year : ${list[i].Year}</p>
+    `;
+  });
+});
+
 toggle.addEventListener("click", (e) => {
   toggle.classList.toggle("expand");
   playerBottom.classList.toggle("expand");
 });
-
+detailToggle.addEventListener("click", (e) => {
+  trackDetails.classList.remove("view");
+});
 // MusicPlayer (Functions)
 
 //    // Track Loading

@@ -60,9 +60,77 @@ main {
   backdrop-filter: blur(10px);
   box-shadow: 0 0 10px black;
   border-radius: 24px;
-  margin: 20px;
+  margin: 20px auto 0 auto;
+}
+.playerWrapper .fullDetails {
+  transform: scale(0);
+  z-index: -100;
+  transition: 0.3s all ease;
+}
+.viewDetails {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: 0.3s all ease;
+}
+.viewDetails::after {
+  position: inherit;
+  content: "";
+  width: 30px;
+  height: 1px;
+  transform: translateY(10px) translateX(0) rotate(45deg);
+  background: white;
+  transition: 0.3s all ease;
+}
+
+.viewDetails::before {
+  position: inherit;
+  content: "";
+  width: 30px;
+  height: 1px;
+  transform: translateY(0) rotate(-45deg);
+  background: white;
+}
+.playerWrapper .fullDetails.view {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  background: rgba(0, 0, 0, 1);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  z-index: 50;
+  cursor: default;
+}
+.playerWrapper .fullDetails .albumArt {
+  transform: translateY(-20px);
+  width: 40vh;
+  height: 40vh;
+  border-radius: 24px;
+}
+.playerWrapper .fullDetails .trackInfo {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1rem;
 }
 .playerTop {
+  display: none;
   position: absolute;
   top: 0;
   width: 100%;
@@ -105,12 +173,14 @@ main {
 }
 .playlistWrap {
   position: absolute;
+  top: 0;
   width: 100%;
-  height: calc(100% - 150px);
-  background: rgba(0, 0, 0, 0.6);
+  height: calc(100% - 100px);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  margin: 70px 0 0 0;
+  margin: 0 0 0 0;
   overflow: auto;
+  border-radius: 24px 24px 0 0;
 }
 .list {
   display: flex;
@@ -149,9 +219,18 @@ main {
 }
 .list .item .edit {
   position: absolute;
-  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
   text-align: center;
-  cursor: default;
+  background: rgba(128, 128, 128, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+.list .item .edit:hover {
+  background: rgba(128, 128, 128, 0.8);
 }
 .playlistWrap::-webkit-scrollbar {
   background: transparent;
@@ -201,11 +280,13 @@ main {
   height: 1px;
   transform: translateY(0) translateX(10px) rotate(45deg);
   background: white;
+  transition: 0.3s all ease;
 }
 .expandPlayer.expand::after {
   width: 30px;
   height: 1px;
   transform: translateY(10px) translateX(0) rotate(45deg);
+  transition: 0.3s all ease;
 }
 .expandPlayer::before {
   position: inherit;
@@ -353,8 +434,8 @@ main {
 .vol::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border: 1px solid gray;
   border-radius: 50%;
   background: #20001b;
