@@ -73,9 +73,6 @@ let list = [
   },
 ];
 
-let likedTracks = [];
-let userPlaylists = [];
-
 list.map((item) => {
   playlist.innerHTML += `
   <li class="item">
