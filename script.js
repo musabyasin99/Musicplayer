@@ -129,6 +129,7 @@ list.map((item) => {
           style="font-size: 0.5rem; border-radius: 50%;object-fit:cover;"
           width="50"
           height="50"
+          loading="lazy"
           src="${item.img}"
           alt="poster"
           class="poster"
